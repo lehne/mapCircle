@@ -113,3 +113,24 @@ function kml_regular_polygon(longitude,latitude,meters,segments,offset){
     s += '</Polygon>\n';
     return s;
 }
+
+function kml_ring_with_placeMark(longitude,latitude,meters,segments,offset,name,description){
+    var s = '<Placemark>';
+        s+='<name>' + name + '</name>\n';
+        s+='<description>'+ description + '</description>'
+        s+=kml_regular_polygon(longitude,latitude,meters,segments,offset);
+        s+='</Placemark>';
+    return s;
+}
+
+function kml_header(documentName){
+    var s='<?xml version="1.0" encoding="UTF-8"?>';
+    s+='<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2" xmlns:kml="http://www.opengis.net/kml/2.2" xmlns:atom="http://www.w3.org/2005/Atom">';
+    s+='<Document>';
+    s+='<name>'+ documentName+'</name>';
+    return s;
+}
+
+function kml_footer(){
+    return '</Document></kml>';
+}
