@@ -70,9 +70,9 @@ function spoints(longitude,latitude,meters,n,offset){
     var RAD = Math.PI/180.0;
     //mean radius of earth in meters
     var MR = 6378.1 * 1000.0;
-    var offsetRadians = offset * RAD;
+    var offsetRadians = (offset || 0) * RAD;
     // compute long degrees in rad at a given lat
-    var r = (meters/(MR * Math.cos(lat * RAD)));
+    var r = (meters/(MR * Math.cos(latitude * RAD)));
     var vec = toCart(longitude*RAD, latitude* RAD);
     var pt = toCart(longitude*RAD + r, latitude*RAD);
     var pts = [];
